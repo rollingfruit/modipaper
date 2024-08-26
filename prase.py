@@ -1,6 +1,13 @@
 import pypandoc
 import json
 import re
+import os
+
+
+if not pypandoc.get_pandoc_path():
+    pypandoc.download_pandoc()
+    os.environ.setdefault('PYPANDOC_PANDOC', pypandoc.get_pandoc_path())
+
 
 def convert_docx_to_markdown(docx_file, markdown_file_with_comments, markdown_file_without_comments):
 

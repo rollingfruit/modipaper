@@ -1,6 +1,12 @@
 import json
 import re
 import pypandoc
+import os
+
+if not pypandoc.get_pandoc_path():
+    pypandoc.download_pandoc()
+    os.environ.setdefault('PYPANDOC_PANDOC', pypandoc.get_pandoc_path())
+
 
 def load_json(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:

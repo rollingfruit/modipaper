@@ -1,5 +1,5 @@
 streamlit 
 openai 
 tqdm
-pypandoc
-pandoc
+pypandoc-binary
+# 删除 pandoc 行，因为它不是Python包
