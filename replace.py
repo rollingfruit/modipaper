@@ -1,6 +1,7 @@
 import json
 import re
 import pypandoc
+import streamlit as st
 import os
 
 if not pypandoc.get_pandoc_path():
@@ -32,29 +33,25 @@ def replace_comments(markdown_content, comments):
         
         # 提取评论 ID
         id_match = re.search(r'id="(\d+)"', comment_start)
-        print(f"id_match in replace_single_comment:\n ---\n{id_match}\n ---\n")
         if id_match:
             comment_id = id_match.group(1)
-            print(f"comment_id in replace_single_comment:\n ---\n{comment_id}\n ---\n")
             if comment_id in comment_dict:
-                print(f"comment_id in comment_dict in replace_single_comment:\n ---\n{comment_id}\n ---\n")
                 comment = comment_dict[comment_id]
-                print(f"comment in replace_single_comment:\n ---\n{comment}\n ---\n")
                 new_text = comment.get('comment_text_modified', old_text)
-                print(f"new_text in replace_single_comment:\n ---\n{new_text}\n ---\n")
                 
                 # 递归替换嵌套评论
                 new_text = replace_comments(new_text, comments)
                 
-                print(f'Replacing comment {comment_id}:')
-                print(f'Old: {old_text}')
-                print(f'New: {new_text}')
-                print()
+                # print(f'Replacing comment {comment_id}:')
+                # print(f'Old: {old_text}')
+                # print(f'New: {new_text}')
+                # print()
                 
                 return f"{comment_start}{new_text}{comment_end}"
         
         # 如果没有找到匹配的评论，返回原文
-        print(f"No comment found for ID {comment_id}")
+        # print(f"No comment found for ID {comment_id}")
+        st.write(f"No comment found for ID {comment_id}")
         return match.group(0)
 
     # 使用正则表达式替换评论
