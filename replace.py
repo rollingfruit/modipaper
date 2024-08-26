@@ -89,7 +89,7 @@ def convert_markdown_to_docx(markdown_file, docx_file):
     #     outputfile=docx_file,
     #     extra_args=['--standalone', '--wrap=none']
     # )
-    print(f"已将 {markdown_file} 转换为 {docx_file}，包括LaTeX数学公式")
+    # print(f"已将 {markdown_file} 转换为 {docx_file}，包括LaTeX数学公式")
 
 def replace_and_to_docx(markdown_file, json_file_modified, output_file, output_file_docx):
 
@@ -100,7 +100,8 @@ def replace_and_to_docx(markdown_file, json_file_modified, output_file, output_f
     modified_content = replace_comments(markdown_content, comments_modified)
 
     save_markdown(output_file, modified_content)
-    print(f"Modified content saved to {output_file}")
+    # print(f"Modified content saved to {output_file}")
+    st.write(f"Modified content saved to {output_file}")
 
     # md -> docx
     convert_markdown_to_docx(output_file, output_file_docx)
