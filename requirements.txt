@@ -2,3 +2,4 @@ streamlit
 openai 
 tqdm
 pypandoc
+pandoc
