@@ -24,7 +24,6 @@ def save_markdown(file_path, content):
 def replace_comments(markdown_content, comments):
     # 将评论列表转换为字典，以 ID 为键
     comment_dict = {comment['id']: comment for comment in comments}
-    print(f"comment_dict:\n ---\n{comment_dict}\n ---\n")
 
     def replace_single_comment(match):
         comment_start = match.group(1)
